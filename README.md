@@ -33,6 +33,12 @@ Optionally you need to re-generate the permissions from the command line
 ```bash
 php artisan db:seed --class=PermissionRoleTableSeeder
 ```
+If you get error "class does not exist"
+
+```bash
+composer dump-autoload
+```
+
 You can also do this manually from the admin panel
 
 Don't forget to run the new migration
