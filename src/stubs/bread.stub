@@ -19,7 +19,7 @@ class DummyClassBreadSeeder extends Seeder
             'controller'            => '',
             'generate_permissions'  => 1,
             'description'           => '',
-            'rebuild'               => false,
+            'rebuild_data_rows'     => true,
         ];
     }
 

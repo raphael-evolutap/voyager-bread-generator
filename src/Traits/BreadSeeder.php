@@ -48,7 +48,7 @@ trait BreadSeeder
 
         collect($this->inputFields())->each(function ($field, $key) use ($productDataType) {
             $dataRow = $this->dataRow($productDataType, $key);
-            if (!$dataRow->exists || $this->bread()['rebuild']) {
+            if (!$dataRow->exists || $this->bread()['rebuild_data_rows']) {
                 $dataRow->fill($field)->save();
             }
         });
@@ -74,7 +74,7 @@ trait BreadSeeder
         }
 
         $menuItem = MenuItem::firstOrNew($menuEntry->only(['menu_id', 'title', 'url', 'route'])->toArray());
-        if (!$menuItem->exists || $this->bread()['rebuild']) {
+        if (!$menuItem->exists || $this->bread()['rebuild_data_rows']) {
             $menuItem->fill($menuEntry->only(['target', 'icon_class', 'color', 'parent_id', 'order'])->toArray())->save();
         }
     }
