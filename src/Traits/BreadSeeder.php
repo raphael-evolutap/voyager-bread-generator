@@ -2,6 +2,7 @@
 
 namespace VoyagerBread\Traits;
 
+use Illuminate\Support\Arr;
 use TCG\Voyager\Models\DataRow;
 use TCG\Voyager\Models\DataType;
 use TCG\Voyager\Models\Menu;
@@ -31,8 +32,8 @@ trait BreadSeeder
     public function createDataType()
     {
         $dataType = $this->dataType('slug', $this->bread()['name']);
-        if (!$dataType->exists) {
-            $dataType->fill($this->bread())->save();
+        if (!$dataType->exists || $this->bread()['rebuild_data_type']) {
+            $dataType->fill(Arr::except($this->bread(), ['rebuild_data_type', 'rebuild_data_rows']))->save();
         }
     }
 
