@@ -2,9 +2,9 @@
 
 namespace VoyagerBread\Traits;
 
-use TCG\Voyager\Models\Menu;
 use TCG\Voyager\Models\DataRow;
 use TCG\Voyager\Models\DataType;
+use TCG\Voyager\Models\Menu;
 use TCG\Voyager\Models\MenuItem;
 use TCG\Voyager\Models\Permission;
 
@@ -48,11 +48,10 @@ trait BreadSeeder
 
         collect($this->inputFields())->each(function ($field, $key) use ($productDataType) {
             $dataRow = $this->dataRow($productDataType, $key);
-            if (!$dataRow->exists) {
+            if (!$dataRow->exists || $this->bread()['rebuild']) {
                 $dataRow->fill($field)->save();
             }
         });
-
     }
 
     /**
@@ -75,7 +74,7 @@ trait BreadSeeder
         }
 
         $menuItem = MenuItem::firstOrNew($menuEntry->only(['menu_id', 'title', 'url', 'route'])->toArray());
-        if (!$menuItem->exists) {
+        if (!$menuItem->exists || $this->bread()['rebuild']) {
             $menuItem->fill($menuEntry->only(['target', 'icon_class', 'color', 'parent_id', 'order'])->toArray())->save();
         }
     }
@@ -115,8 +114,8 @@ trait BreadSeeder
     protected function dataRow($type, $field)
     {
         return DataRow::firstOrNew([
-                'data_type_id' => $type->id,
-                'field'        => $field,
-            ]);
+            'data_type_id' => $type->id,
+            'field' => $field,
+        ]);
     }
 }
