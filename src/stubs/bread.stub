@@ -11,7 +11,8 @@ class DummyClassBreadSeeder extends Seeder
     {
         return [
             // usually the name of the table
-            'name'                  => 'DummySnakeCaseSingular',
+            'name'                  => 'DummySnakeCasePlural',
+            'slug'                  => 'DummySnakeCasePlural'
             'display_name_singular' => 'DummyStudlyCaseSingular',
             'display_name_plural'   => 'DummyStudlyCasePlural',
             'icon'                  => '',
