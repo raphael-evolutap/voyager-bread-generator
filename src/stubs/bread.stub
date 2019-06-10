@@ -42,14 +42,16 @@ class DummyClassBreadSeeder extends Seeder
             ],
             'created_at' => [
                 'type'         => 'timestamp',
-                'display_name' => 'created_at',
+                'display_name' => 'Criado em',
                 'required'     => 0,
-                'browse'       => 1,
+                'browse'       => 0,
                 'read'         => 1,
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'details'      => '',
+                'details'      => [
+                    'format' => '%d-%m-%Y',
+                ],
                 'order'        => 2,
             ],
             'updated_at' => [
