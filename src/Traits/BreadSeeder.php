@@ -46,7 +46,7 @@ trait BreadSeeder
     public function createInputFields()
     {
         $productDataType = DataType::where('name', $this->bread()['name'])->firstOrFail();
-
+        DataRow::where('data_type_id', $productDataType->id)->delete();
         collect($this->inputFields())->each(function ($field, $key) use ($productDataType) {
             $dataRow = $this->dataRow($productDataType, $key);
             if (!$dataRow->exists || $this->bread()['rebuild_data_rows']) {
