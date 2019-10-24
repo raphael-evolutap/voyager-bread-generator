@@ -1,5 +1,5 @@
 {
-    "name": "devig/voyager-bread-generator",
+    "name": "evolutap/voyager-bread-generator",
     "description": "Create BREAD from the console using artisan",
     "type": "library",
     "version": "1.0.0",
