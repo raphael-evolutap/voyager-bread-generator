@@ -1,4 +1,6 @@
 
+## FORK FROM https://github.com/devig/voyager-bread-generator with some modifications.
+
 ## Voyager BREAD generator
 
 There is a common issue when we try to deploy local projects to a different environment. Currently, we need to export the database or so, in order to keep all the new BREADs structure across all the environments.
@@ -45,4 +47,3 @@ Don't forget to run the new migration
 ```bash
 php artisan migrate
 ```
-
