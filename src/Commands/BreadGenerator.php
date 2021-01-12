@@ -71,7 +71,7 @@ class BreadGenerator extends GeneratorCommand
         $replacements = collect([
             'DummyStudlyCaseSingular' => Str::studly($name),
             'DummyStudlyCasePlural' => Str::plural(Str::studly($name)),
-            'DummySnakeCaseSingular' => Str::snake($name),
+            'DummySnakeCaseSingular' => Str::snake(Str::singular($name)),
             'DummySnakeCasePlural' => Str::plural(Str::snake($name))
         ]);
         foreach ($replacements as $placeholder => $replacement) {
@@ -126,7 +126,7 @@ class BreadGenerator extends GeneratorCommand
      */
     protected function createModel()
     {
-        $table = Str::studly($this->argument('name'));
+        $table = Str::studly(Str::singular($this->argument('name')));
         $this->call('make:model', [
             'name' => $table
         ]);
